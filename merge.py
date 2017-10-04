@@ -10,15 +10,15 @@ import sys
 start_time = timeit.default_timer()
 
 # Connect to the database
-connection = pymysql.connect(host='34.196.124.246',
+connection = pymysql.connect(host='x.x.x.x',
                              port=3316,
-                             user='candidate',
-                             password='Doximity',
+                             user='abcd',
+                             password='efgh',
                              db='data_engineer',
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
 
-url_stub = 'http://de-tech-challenge-api.herokuapp.com/api'
+url_stub = 'http://some-website.com/api'
 api_ver_str = 'v1' if len(sys.argv) <= 1 else sys.argv[1]
 vdr_tbl = 'users'
 url = '/'.join([url_stub, api_ver_str, vdr_tbl])
@@ -242,8 +242,8 @@ try:
         cnsl_data = pd.concat([matches, mixed_no_matches], axis = 0)
 
         #create source column for identifying record source
-        cnsl_data.loc[cnsl_data.id_y.isnull(), 'source'] = 'Vendor'
-        cnsl_data.loc[cnsl_data.id_x.isnull(), 'source'] = 'Doximity'
+        cnsl_data.loc[cnsl_data.id_y.isnull(), 'source'] = 'Vendor1'
+        cnsl_data.loc[cnsl_data.id_x.isnull(), 'source'] = 'Vendor2'
         cnsl_data.loc[cnsl_data.id_y.notnull() & cnsl_data.id_x.notnull(), 'source'] = 'Common'
 
         # replace NaNs with dummy dates
