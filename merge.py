@@ -242,8 +242,8 @@ try:
         cnsl_data = pd.concat([matches, mixed_no_matches], axis = 0)
 
         #create source column for identifying record source
-        cnsl_data.loc[cnsl_data.id_y.isnull(), 'source'] = 'Vendor1'
-        cnsl_data.loc[cnsl_data.id_x.isnull(), 'source'] = 'Vendor2'
+        cnsl_data.loc[cnsl_data.id_y.isnull(), 'source'] = 'Vdr'
+        cnsl_data.loc[cnsl_data.id_x.isnull(), 'source'] = 'Dox'
         cnsl_data.loc[cnsl_data.id_y.notnull() & cnsl_data.id_x.notnull(), 'source'] = 'Common'
 
         # replace NaNs with dummy dates
